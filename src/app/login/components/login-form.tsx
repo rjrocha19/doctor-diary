@@ -10,18 +10,18 @@ import {
 import { Button } from "@/components/ui/button";
 import {
   Form,
-  FormControl, FormField,
+  FormControl,
+  FormField,
   FormItem,
   FormLabel,
-  FormMessage
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-const registerSchema = z.object({
-  name: z.string().trim().min(2, { message: "Nome é obrigatório" }),
+const loginSchema = z.object({
   email: z
     .string()
     .trim()
@@ -30,17 +30,16 @@ const registerSchema = z.object({
   password: z.string().trim().min(8, { message: "Senha é obrigatória" }),
 });
 
-export function SingUpForm() {
-  const form = useForm<z.infer<typeof registerSchema>>({
-    resolver: zodResolver(registerSchema),
+export function LoginForm() {
+  const form = useForm<z.infer<typeof loginSchema>>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
-      name: "",
       email: "",
       password: "",
     },
-  }); 
+  });
 
-  function onSubmit(values: z.infer<typeof registerSchema>) {
+  function onSubmit(values: z.infer<typeof loginSchema>) {
     console.log(values);
   }
 
@@ -50,23 +49,10 @@ export function SingUpForm() {
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <CardHeader>
-              <CardTitle>Criar uma conta</CardTitle>
-              <CardDescription>Crie uma conta para continuar.</CardDescription>
+              <CardTitle>Login</CardTitle>
+              <CardDescription>Faça login para continuar.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Nome</FormLabel>
-                    <FormControl>
-                      <Input placeholder="João da Silva" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
               <FormField
                 control={form.control}
                 name="email"
@@ -96,7 +82,7 @@ export function SingUpForm() {
             </CardContent>
             <CardFooter>
               <Button type="submit" className="w-full">
-                Criar conta
+                Entrar
               </Button>
             </CardFooter>
           </form>
