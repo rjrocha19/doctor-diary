@@ -23,6 +23,7 @@ import { useForm } from "react-hook-form";
 import { authClient } from "@/lib/auth-client";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const registerSchema = z.object({
   name: z.string().trim().min(2, { message: "Nome é obrigatório" }),
@@ -56,6 +57,9 @@ export function SingUpForm() {
       {
         onSuccess: () => {
           router.push("/dashboard");
+        },
+        onError: (error) => {
+          toast.error("Erro ao criar conta");
         },
       },
     );
