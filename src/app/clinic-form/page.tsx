@@ -1,9 +1,7 @@
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
@@ -20,7 +18,7 @@ const ClinicFormPage = () => {
               Adicione uma clínica para começar a usar o sistema.
             </DialogDescription>
           </DialogHeader>
-          <ClinicForm />        
+          <ClinicForm />
         </DialogContent>
       </Dialog>
     </div>

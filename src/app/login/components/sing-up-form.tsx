@@ -134,17 +134,19 @@ const SingUpForm = () => {
               />
             </CardContent>
             <CardFooter>
-              <Button
-                type="submit"
-                className="w-full"
-                disabled={form.formState.isSubmitting}
-              >
-                {form.formState.isSubmitting ? (
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                ) : (
-                  "Criar conta"
-                )}
-              </Button>
+              <div className="w-full space-y-2">
+                <Button
+                  type="submit"
+                  className="w-full"
+                  disabled={form.formState.isSubmitting}
+                >
+                  {form.formState.isSubmitting ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    "Criar conta"
+                  )}
+                </Button>
+              </div>
             </CardFooter>
           </form>
         </Form>

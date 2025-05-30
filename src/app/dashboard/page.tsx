@@ -26,7 +26,7 @@ const DashboardPage = async () => {
       <h1>Dashboard</h1>
       <h1>{session?.user?.name}</h1>
       <h1>{session?.user?.email}</h1>
-      <h1>{clinics[0].clinic.name}</h1>
+      
       <SignOutButton />
     </div>
   );

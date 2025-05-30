@@ -3,7 +3,7 @@
 import { db } from "@/db";
 import { clinicsTable, usersToClinicsTable } from "@/db/schema";
 import { auth } from "@/lib/auth";
-import { redirect } from "next/dist/server/api-utils";
+import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 
 export const createClinic = async (name: string) => {
