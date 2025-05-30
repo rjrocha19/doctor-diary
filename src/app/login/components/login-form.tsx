@@ -34,7 +34,7 @@ const loginSchema = z.object({
   password: z.string().trim().min(8, { message: "Senha é obrigatória" }),
 });
 
-export function LoginForm() {
+const LoginForm = () => {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof loginSchema>>({
@@ -125,4 +125,6 @@ export function LoginForm() {
       </Card>
     </div>
   );
-}
+};
+
+export default LoginForm;

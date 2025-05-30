@@ -35,7 +35,7 @@ const registerSchema = z.object({
   password: z.string().trim().min(8, { message: "Senha é obrigatória" }),
 });
 
-export function SingUpForm() {
+const SingUpForm = () => {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof registerSchema>>({
@@ -149,4 +149,6 @@ export function SingUpForm() {
       </Card>
     </div>
   );
-}
+};
+
+export default SingUpForm;

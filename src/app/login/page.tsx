@@ -1,10 +1,21 @@
 "use client";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { SingUpForm } from "./components/sing-up-form";
-import { LoginForm } from "./components/login-form";
+import LoginForm from "./components/login-form";
+import SingUpForm from "./components/sing-up-form";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
-export default function LoginPage() {
+const LoginPage = async () => {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (session) {
+    redirect("/dashboard");
+  }
+
   return (
     <div className="flex h-screen w-screen items-center justify-center bg-blue-100">
       <Tabs defaultValue="login" className="w-[400px]">
@@ -21,4 +32,6 @@ export default function LoginPage() {
       </Tabs>
     </div>
   );
-}
+};
+
+export default LoginPage;
